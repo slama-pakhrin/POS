@@ -22,7 +22,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var selectedItem: UILabel!
     @IBOutlet weak var inputQuantityDisplay: UITextField!
     
-//    @IBOutlet var allButtons : [UIButton]!
+    @IBOutlet weak var confirmBuy: UIImageView!
+    //    @IBOutlet var allButtons : [UIButton]!
     
     
     @IBOutlet weak var buyButton: UIButton!
@@ -39,6 +40,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         buyButton.isEnabled = false
         inputQuantityDisplay.text = "0"
         displayFinalValue.text = "0"
+        displayFinalValue.textAlignment = .right
     }
     
     
@@ -70,41 +72,62 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         inputQuantityDisplay.text! += (sender.titleLabel?.text)!
         buyButtonEnabled()
+        displayFinalPrice()
+        
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
         inputQuantityDisplay.text?.popLast()
         if(inputQuantityDisplay.text?.count != 0){
             buyButtonEnabled()
+            displayFinalPrice()
         }
         else if(inputQuantityDisplay.text?.count == 0){
             buyButton.isEnabled = false
+            displayFinalValue.text = "0"
+            displayFinalValue.textColor = .black
         }
     }
     
     @IBAction func clearClicked(_ sender: Any) {
         inputQuantityDisplay.text? = ""
         buyButton.isEnabled = false
+        displayFinalValue.text = "0"
+        displayFinalValue.textColor = .black
     }
     
     func buyButtonEnabled(){
+        
         let quantityCount = ((inputQuantityDisplay.text) ?? "0")
         let numQualityCount = Int(quantityCount)
-        if(numQualityCount! <= dataCollection.data[selectedRow ?? 0].quantity){
+        
+        if(numQualityCount! <= dataCollection.data[selectedRow ?? 0].quantity && numQualityCount! > 0){
             buyButton.isEnabled = true
-            print("hmm")
         }
         else{
             buyButton.isEnabled = false
         }
     }
    
-    @IBAction func buyButtonClicked(_ sender: Any) {
-        let confirmImage = UIImage(systemName: "checkmark.rectangle")
-        
-        let quantityCount = ((inputQuantityDisplay.text) ?? "0")
+    func displayFinalPrice(){
+        let quantityCount = ((inputQuantityDisplay?.text) ?? "0")
         let numQualityCount = Double(quantityCount)!
-        displayFinalValue.text = "\(numQualityCount * dataCollection.data[selectedRow ?? 0].price) \(confirmImage)"
+        let finalValue = "\(numQualityCount * dataCollection.data[selectedRow ?? 0].price)"
+        displayFinalValue.text = finalValue
+        print(finalValue)
+        print(dataCollection.data[selectedRow ?? 0].quantity)
+        if(Int(numQualityCount) > dataCollection.data[selectedRow ?? 0].quantity){
+            displayFinalValue.textColor = .red
+        }
+        else{
+            displayFinalValue.textColor = .black
+        }
+    }
+    
+    @IBAction func buyButtonClicked(_ sender: Any) {
+//        let confirmImage =
+        
+        confirmBuy.image = UIImage(systemName: "checkmark.rectangle")
         
     }
     
