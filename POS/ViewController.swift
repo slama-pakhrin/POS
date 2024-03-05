@@ -7,7 +7,7 @@
 
 import UIKit
 
-let dataCollection = collection()
+let dataCollection = collection() //global object for usage over all the views
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -17,21 +17,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var displayItems: UIPickerView!
     @IBOutlet weak var selectedItem: UILabel!
     @IBOutlet weak var inputQuantityDisplay: UITextField!
-    
     @IBOutlet weak var confirmBuy: UIImageView!
-    //    @IBOutlet var allButtons : [UIButton]!
-    
-    
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var managerButton: UIButton!
     
+    //all the things to occur in the very beginning of this application
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        var itemCount : String;
         displayItems.delegate = self;
         displayItems.dataSource = self;
-        //default display value
-//        selectedItem.text = items[0][0]
         inputQuantityDisplay.textAlignment = .right;
         buyButton.isEnabled = false
         inputQuantityDisplay.text = "0"
@@ -42,13 +36,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        displayItems.reloadAllComponents()
+        displayItems.reloadAllComponents() //coming back from unwind segue, the data needs to be updated
     }
+    
     // defines number of columns
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        //        return dataCollection.data[0].getColumns()
         return 1
     }
+    
     // defines number of rows
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return dataCollection.data.count;
@@ -56,27 +51,23 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     //defines content to be displayed in each field
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        //        itemCount = items[row][component]
         return "\(dataCollection.data[row].title) \u{00A0} \u{00A0} \u{00A0} \u{00A0} \(dataCollection.data[row].quantity) \u{00A0} \u{00A0} \u{00A0} \u{00A0} $\(dataCollection.data[row].price)"
-        
     }
     //displaying the choosen item
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedItem.text = dataCollection.data[row].title
-        selectedRow = row
+        selectedRow = row //selected row holds the current row inside pickerview which is passed to all the data displaying elements to correctly display the data
         inputQuantityDisplay.text = ""
         buyButton.isEnabled = false
     }
-    
-    
+    //any numbers clicked will trigger this function
     @IBAction func buttonsClicked(_ sender: UIButton) {
-        
         inputQuantityDisplay.text! += (sender.titleLabel?.text)!
         buyButtonEnabled()
         displayFinalPrice()
         confirmBuy.isHidden = true
     }
-    
+    //back button in the num pad will trigger this function
     @IBAction func backButtonClicked(_ sender: Any) {
         inputQuantityDisplay.text?.popLast()
         confirmBuy.isHidden = true
@@ -90,7 +81,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             displayFinalValue.textColor = .black
         }
     }
-    
+    //clear button will trigger this function
     @IBAction func clearClicked(_ sender: Any) {
         inputQuantityDisplay.text? = ""
         buyButton.isEnabled = false
@@ -98,12 +89,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         displayFinalValue.textColor = .black
         confirmBuy.isHidden = true
     }
-    
+    //this function is used to verify the visibility of the buy button
     func buyButtonEnabled(){
-        
         let quantityCount = ((inputQuantityDisplay.text) ?? "0")
         let numQualityCount = Int(quantityCount)
-        
         if(numQualityCount! <= dataCollection.data[selectedRow ?? 0].quantity && numQualityCount! > 0){
             buyButton.isEnabled = true
         }
@@ -111,7 +100,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             buyButton.isEnabled = false
         }
     }
-    
+    //this function is responsible to display total amount of the purchase
     func displayFinalPrice(){
         let quantityCount = ((inputQuantityDisplay?.text) ?? "0")
         let numQualityCount = Double(quantityCount)!
@@ -126,7 +115,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             displayFinalValue.textColor = .black
         }
     }
-    
+    //this function is triggered when buy button is clicked and it appends the transaction into the history data
     @IBAction func buyButtonClicked(_ sender: Any) {
         confirmBuy.isHidden = false
         dataCollection.data[selectedRow ?? 0].quantity = dataCollection.data[selectedRow ?? 0].quantity - Int(inputQuantityDisplay.text!)!
@@ -136,36 +125,30 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         inputQuantityDisplay.text = ""
         buyButton.isEnabled = false
     }
-    
+    //this function is for the admin to get past this view in order to make changes in the inventory (authorization)
     @IBAction func managerAccessButtonClicked(_ sender: Any) {
+        authorization()
+    }
+    //this function is created to call itself when the user enters incorrect passcode
+    func authorization(){
         let passcode = "1234"
-        
         let alert = UIAlertController(title: "Enter Code", message: nil, preferredStyle: .alert)
         alert.addTextField{ (passcode) in
-            passcode.isSecureTextEntry = true
+            passcode.isSecureTextEntry = true //this is to hide the entered password
         }
-        
-        
         let submitButton = UIAlertAction(title: "Submit", style: .default){ _ in
             if var passcodeEntered = alert.textFields?.first?.text{
                 if(passcode == passcodeEntered){
                     self.performSegue(withIdentifier: "toTabBar", sender: self)
                 }
                 else{
-                    passcodeEntered = ""
+                    self.authorization()
                 }
             }
         }
-        
         alert.addAction(submitButton)
         present(alert, animated: true)
     }
-    
-    
-    @IBAction func unwindToSourceViewController(_ segue: UIStoryboardSegue) {
-        
-        
-    }
-    
+    //bringing back to the initial view
+    @IBAction func unwindToSourceViewController(_ segue: UIStoryboardSegue) {}
 }
-
