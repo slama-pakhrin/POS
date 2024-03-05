@@ -64,7 +64,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedItem.text = dataCollection.data[row].title
         selectedRow = row
-        
+        inputQuantityDisplay.text = ""
+        buyButton.isEnabled = false
     }
     
     
@@ -129,8 +130,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBAction func buyButtonClicked(_ sender: Any) {
         confirmBuy.isHidden = false
         dataCollection.data[selectedRow ?? 0].quantity = dataCollection.data[selectedRow ?? 0].quantity - Int(inputQuantityDisplay.text!)!
-        
+        let tempData = History(soldItemName: dataCollection.data[selectedRow ?? 0].title, soldItemQuantity: Int(inputQuantityDisplay.text!)!)
+        dataCollection.historyData.append(tempData)
         displayItems.reloadAllComponents()
+        inputQuantityDisplay.text = ""
+        buyButton.isEnabled = false
     }
     
     @IBAction func managerAccessButtonClicked(_ sender: Any) {

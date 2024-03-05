@@ -362,7 +362,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="YFX-FI-h70" customClass="historyTableViewCell" customModule="POS" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyCell" id="YFX-FI-h70" customClass="historyTableViewCell" customModule="POS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YFX-FI-h70" id="982-42-CfD">
@@ -377,7 +377,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOl-z6-5bd">
-                                            <rect key="frame" x="34" y="22" width="187" height="21"/>
+                                            <rect key="frame" x="34" y="22" width="339" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -397,16 +397,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="History" id="mlM-vo-dxj">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="BG4-Rw-9et">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="9fE-L5-vyt">
-                                <rect key="frame" x="16" y="5" width="87" height="34.333333333333336"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="mzH-WC-x7q">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="1Fw-WJ-sXr">
+                                <rect key="frame" x="-37" y="-17" width="87" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Done"/>
+                                <connections>
+                                    <segue destination="HhT-f5-u5V" kind="unwind" unwindAction="unwindToSourceViewController:" id="9Dt-PP-bFW"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <segue destination="HhT-f5-u5V" kind="unwind" unwindAction="unwindToSourceViewController:" id="NJL-zO-PqU"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>

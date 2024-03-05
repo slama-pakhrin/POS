@@ -18,6 +18,13 @@ class history: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: <#T##String#>, for: <#T##IndexPath#>)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! historyTableViewCell
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy, HH:mm:ss a"
+        let currentDate = Date()
+        let dateString = dateFormatter.string(from: currentDate)
+        cell.dateDisplay.text = dateString
+        cell.itemDisplay.text = "\(dataCollection.historyData[indexPath.row].soldItemQuantity) X \(dataCollection.historyData[indexPath.row].soldItemName)"
+        return cell
     }
 }

@@ -28,7 +28,7 @@ class collection{
     var data =
     [item(title: "Computer", quantity: 4, price: 400.99),
      item(title: "Monitor", quantity: 4, price: 200.99)]
-    var historyData = [History(soldItemName: "Test", soldItemQuantity: 0)]
+    var historyData : [History] = []
 }
 
 class History{
