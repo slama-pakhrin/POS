@@ -197,7 +197,7 @@
             <objects>
                 <tableViewController id="var-XS-mBS" customClass="edit" customModule="POS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="vQo-Yj-nN0">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -296,8 +296,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
                                 <connections>
-                                    <action selector="cancelEdits:" destination="ewZ-fA-Ubc" eventType="touchUpInside" id="b3C-mZ-eMV"/>
-                                    <segue destination="var-XS-mBS" kind="show" id="ORF-bp-lZe"/>
+                                    <segue destination="Veq-rq-scQ" kind="unwind" unwindAction="unwindToEdit:" id="lYR-CV-WVG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Skd-Hj-vx4">
@@ -307,7 +306,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
                                 <connections>
                                     <action selector="saveEdits:" destination="ewZ-fA-Ubc" eventType="touchUpInside" id="nCH-b6-MxW"/>
-                                    <segue destination="var-XS-mBS" kind="show" id="yBu-AS-bxx"/>
+                                    <segue destination="Veq-rq-scQ" kind="unwind" unwindAction="unwindToEdit:" id="1jm-MO-Lvn"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2e-dV-Moy">
@@ -328,13 +327,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gjo-m2-AkN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Veq-rq-scQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4563" y="-539"/>
         </scene>
         <!--Edit-->
         <scene sceneID="zG4-a5-YQv">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="asF-2i-lN8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dJD-7C-8uQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Edit" id="4yv-l1-KwH"/>
                     <toolbarItems/>
@@ -347,6 +346,7 @@
                         <segue destination="var-XS-mBS" kind="relationship" relationship="rootViewController" id="daM-1N-OfK"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="asF-2i-lN8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2167" y="-311"/>
         </scene>
@@ -375,7 +375,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="mlM-vo-dxj">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="BG4-Rw-9et">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="9fE-L5-vyt">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="9fE-L5-vyt">
                                 <rect key="frame" x="16" y="5" width="87" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -419,6 +419,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="SLb-CX-q9P"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GNC-rm-Lbf">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -432,9 +433,6 @@
             <point key="canvasLocation" x="1057" y="-56"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="ORF-bp-lZe"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">

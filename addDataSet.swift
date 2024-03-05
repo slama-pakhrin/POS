@@ -39,7 +39,6 @@ class addDataSet: UIViewController {
         }
         
     }
-    @IBAction func cancelEdits(_ sender: Any) {
-    }
+    
     
 }
