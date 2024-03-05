@@ -9,6 +9,5 @@ import UIKit
 
 class editTableViewCell: UITableViewCell {
     @IBOutlet weak var labelAtTop: UILabel!
-    
     @IBOutlet weak var labelAtBottom: UILabel!
 }
