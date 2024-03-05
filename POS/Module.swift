@@ -7,8 +7,10 @@
 
 import Foundation
 
-//this file is created to resolve the problem: to pass the integer inside pickerview that was stored as string but displayed as an integer to evaluate with the value inside textField in order to check buy button visibility
-//using class
+//all the data that are used in this project is referring to this file
+//item holds our products
+//collection holds the instances of item and History
+//History holds the sold products
 
 class item{
     var title: String
