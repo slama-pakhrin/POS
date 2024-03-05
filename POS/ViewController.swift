@@ -7,15 +7,12 @@
 
 import UIKit
 
+let dataCollection = collection()
+var selectedRow : Int?
+
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    let items = [["Computer", "4", "$400.99"],["Monitor", "4", "$200.99"]]
-    //    let items = ["Computer", "Monitor"]
-    //    let itemsQuantity = ["4", "4"]
-    //    let itemsPrice = ["400.99", "200.99"]
-    let columns = 3;
-    let dataCollection = collection()
-    var selectedRow : Int?
+  
     
     @IBOutlet weak var displayFinalValue: UILabel!
     @IBOutlet weak var displayItems: UIPickerView!
@@ -35,7 +32,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         displayItems.delegate = self;
         displayItems.dataSource = self;
         //default display value
-        selectedItem.text = items[0][0]
+//        selectedItem.text = items[0][0]
         inputQuantityDisplay.textAlignment = .right;
         buyButton.isEnabled = false
         inputQuantityDisplay.text = "0"
@@ -49,7 +46,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         //        return dataCollection.data[0].getColumns()
         return 1
     }
-    // defines number of rows in each column
+    // defines number of rows
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return dataCollection.data.count;
     }
