@@ -27,7 +27,4 @@ class item{
 class collection{
     var data = [item(title: "Computer", quantity: 4, price: 400.99),item(title: "Monitor", quantity: 4, price: 200.99)]
     
-//    func getColumns() -> Int {
-//        return data.count
-//    }
 }

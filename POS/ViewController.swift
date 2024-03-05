@@ -8,15 +8,15 @@
 import UIKit
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
+    
     let items = [["Computer", "4", "$400.99"],["Monitor", "4", "$200.99"]]
-//    let items = ["Computer", "Monitor"]
-//    let itemsQuantity = ["4", "4"]
-//    let itemsPrice = ["400.99", "200.99"]
+    //    let items = ["Computer", "Monitor"]
+    //    let itemsQuantity = ["4", "4"]
+    //    let itemsPrice = ["400.99", "200.99"]
     let columns = 3;
     let dataCollection = collection()
     var selectedRow : Int?
-
+    
     @IBOutlet weak var displayFinalValue: UILabel!
     @IBOutlet weak var displayItems: UIPickerView!
     @IBOutlet weak var selectedItem: UILabel!
@@ -31,7 +31,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        var itemCount : String;
+        //        var itemCount : String;
         displayItems.delegate = self;
         displayItems.dataSource = self;
         //default display value
@@ -46,17 +46,17 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     // defines number of columns
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return dataCollection.data[0].getColumns()
+        //        return dataCollection.data[0].getColumns()
         return 1
     }
     // defines number of rows in each column
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return dataCollection.data.count;
     }
-   
+    
     //defines content to be displayed in each field
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        itemCount = items[row][component]
+        //        itemCount = items[row][component]
         return "\(dataCollection.data[row].title) \u{00A0} \u{00A0} \u{00A0} \u{00A0} \(dataCollection.data[row].quantity) \u{00A0} \u{00A0} \u{00A0} \u{00A0} $\(dataCollection.data[row].price)"
         
     }
@@ -66,7 +66,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         selectedRow = row
         
     }
-
+    
     
     @IBAction func buttonsClicked(_ sender: UIButton) {
         
@@ -108,7 +108,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             buyButton.isEnabled = false
         }
     }
-   
+    
     func displayFinalPrice(){
         let quantityCount = ((inputQuantityDisplay?.text) ?? "0")
         let numQualityCount = Double(quantityCount)!
@@ -125,11 +125,41 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     @IBAction func buyButtonClicked(_ sender: Any) {
-//        let confirmImage =
+        //        let confirmImage =
         
         confirmBuy.image = UIImage(systemName: "checkmark.rectangle")
         
     }
     
+    @IBAction func managerAccessButtonClicked(_ sender: Any) {
+        let passcode = "1234"
+        
+        let alert = UIAlertController(title: "Enter Code", message: nil, preferredStyle: .alert)
+        alert.addTextField{ (passcode) in
+            passcode.isSecureTextEntry = true
+        }
+        
+        
+        let submitButton = UIAlertAction(title: "Submit", style: .default){ _ in
+            if var passcodeEntered = alert.textFields?.first?.text{
+                if(passcode == passcodeEntered){
+                    self.performSegue(withIdentifier: "toTabBar", sender: self)
+                }
+                else{
+                    passcodeEntered = ""
+                }
+            }
+        }
+        
+        alert.addAction(submitButton)
+        present(alert, animated: true)
+    }
+    
+    
+    @IBAction func unwindToSourceViewController(_ segue: UIStoryboardSegue) {
+        
+        
+    }
     
 }
+
