@@ -20,6 +20,7 @@
 		E919F37C2B91854D00B0BC58 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = E919F37B2B91854D00B0BC58 /* Module.swift */; };
 		E92CD7FD2B96995B006913B0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CD7FC2B96995B006913B0 /* TableViewController.swift */; };
 		E92CD7FF2B969DC8006913B0 /* history.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CD7FE2B969DC8006913B0 /* history.swift */; };
+		E92CD8012B96F394006913B0 /* editTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CD8002B96F394006913B0 /* editTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		E919F37B2B91854D00B0BC58 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		E92CD7FC2B96995B006913B0 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		E92CD7FE2B969DC8006913B0 /* history.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = history.swift; sourceTree = "<group>"; };
+		E92CD8002B96F394006913B0 /* editTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				E919F37B2B91854D00B0BC58 /* Module.swift */,
 				E92CD7FE2B969DC8006913B0 /* history.swift */,
 				E92CD7FC2B96995B006913B0 /* TableViewController.swift */,
+				E92CD8002B96F394006913B0 /* editTableViewCell.swift */,
 				E919F34B2B8EAF2A00B0BC58 /* SceneDelegate.swift */,
 				E919F34D2B8EAF2A00B0BC58 /* ViewController.swift */,
 				E919F3792B8FC02100B0BC58 /* ButtonStack.swift */,
@@ -273,6 +276,7 @@
 				E919F34E2B8EAF2A00B0BC58 /* ViewController.swift in Sources */,
 				E92CD7FF2B969DC8006913B0 /* history.swift in Sources */,
 				E92CD7FD2B96995B006913B0 /* TableViewController.swift in Sources */,
+				E92CD8012B96F394006913B0 /* editTableViewCell.swift in Sources */,
 				E919F34A2B8EAF2A00B0BC58 /* AppDelegate.swift in Sources */,
 				E919F37A2B8FC02100B0BC58 /* ButtonStack.swift in Sources */,
 				E919F37C2B91854D00B0BC58 /* Module.swift in Sources */,
