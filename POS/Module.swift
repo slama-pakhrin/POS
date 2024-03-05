@@ -25,6 +25,17 @@ class item{
 }
 
 class collection{
-    var data = [item(title: "Computer", quantity: 4, price: 400.99),item(title: "Monitor", quantity: 4, price: 200.99)]
-    
+    var data =
+    [item(title: "Computer", quantity: 4, price: 400.99),
+     item(title: "Monitor", quantity: 4, price: 200.99)]
+    var historyData = [History(soldItemName: "Test", soldItemQuantity: 0)]
+}
+
+class History{
+    var soldItemName : String
+    var soldItemQuantity : Int
+    init(soldItemName: String, soldItemQuantity: Int) {
+        self.soldItemName = soldItemName
+        self.soldItemQuantity = soldItemQuantity
+    }
 }

@@ -238,11 +238,14 @@
                     <navigationItem key="navigationItem" id="HN1-nu-xTn">
                         <barButtonItem key="leftBarButtonItem" title="Done" id="aTA-m4-p06">
                             <connections>
-                                <action selector="doneClicked:" destination="var-XS-mBS" id="p5E-wE-5g2"/>
                                 <segue destination="w1H-Lx-yUk" kind="unwind" unwindAction="unwindToSourceViewController:" id="0lk-Og-Jmn"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="6kc-9T-rai"/>
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="6kc-9T-rai">
+                            <connections>
+                                <action selector="addNewObject:" destination="var-XS-mBS" id="xB3-X2-TYY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JqW-YS-Drd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -359,13 +362,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="YFX-FI-h70">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="YFX-FI-h70" customClass="historyTableViewCell" customModule="POS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YFX-FI-h70" id="982-42-CfD">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3L8-7f-LvV">
+                                            <rect key="frame" x="34" y="0.0" width="339" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOl-z6-5bd">
+                                            <rect key="frame" x="34" y="22" width="187" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateDisplay" destination="oOl-z6-5bd" id="9b3-2f-63C"/>
+                                    <outlet property="itemDisplay" destination="3L8-7f-LvV" id="r4x-TK-Cqd"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -373,7 +396,7 @@
                             <outlet property="delegate" destination="hem-vD-9KI" id="5wB-8D-4z9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="mlM-vo-dxj">
+                    <navigationItem key="navigationItem" title="History" id="mlM-vo-dxj">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="BG4-Rw-9et">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="9fE-L5-vyt">
                                 <rect key="frame" x="16" y="5" width="87" height="34.333333333333336"/>

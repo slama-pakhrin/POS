@@ -40,11 +40,19 @@ class edit: UITableViewController, UITabBarDelegate {
         myViewController.retreivedQuantity = dataCollection.data[indexPath.row].quantity
         myViewController.retreivedIndex = indexPath.row
     }
-//    @IBAction func doneClicked(_ sender: Any) {
-//        performSegue(withIdentifier: "unwind", sender: self)
-//    }
     
     @IBAction func unwindToEdit(_ segue: UIStoryboardSegue){
         
     }
+    
+    //this function is going to be responsible for the addition of items
+    @IBAction func addNewObject(_ sender: Any) {
+        let myViewController = storyboard?.instantiateViewController(withIdentifier: "changeDataVC") as! addDataSet
+
+        navigationController?.pushViewController(myViewController, animated: true)
+        myViewController.retreivedTitle = ""
+        myViewController.retreivedValue = 0
+        myViewController.retreivedQuantity = 0
+    }
+    
 }

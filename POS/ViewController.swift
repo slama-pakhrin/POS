@@ -8,11 +8,10 @@
 import UIKit
 
 let dataCollection = collection()
-var selectedRow : Int?
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-  
+    var selectedRow : Int?
     
     @IBOutlet weak var displayFinalValue: UILabel!
     @IBOutlet weak var displayItems: UIPickerView!
@@ -38,6 +37,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         inputQuantityDisplay.text = "0"
         displayFinalValue.text = "0"
         displayFinalValue.textAlignment = .right
+        confirmBuy.image = UIImage(systemName: "checkmark.rectangle")
+        confirmBuy.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,11 +73,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         inputQuantityDisplay.text! += (sender.titleLabel?.text)!
         buyButtonEnabled()
         displayFinalPrice()
-        
+        confirmBuy.isHidden = true
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
         inputQuantityDisplay.text?.popLast()
+        confirmBuy.isHidden = true
         if(inputQuantityDisplay.text?.count != 0){
             buyButtonEnabled()
             displayFinalPrice()
@@ -93,6 +95,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         buyButton.isEnabled = false
         displayFinalValue.text = "0"
         displayFinalValue.textColor = .black
+        confirmBuy.isHidden = true
     }
     
     func buyButtonEnabled(){
@@ -124,10 +127,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     @IBAction func buyButtonClicked(_ sender: Any) {
-        //        let confirmImage =
+        confirmBuy.isHidden = false
+        dataCollection.data[selectedRow ?? 0].quantity = dataCollection.data[selectedRow ?? 0].quantity - Int(inputQuantityDisplay.text!)!
         
-        confirmBuy.image = UIImage(systemName: "checkmark.rectangle")
-        
+        displayItems.reloadAllComponents()
     }
     
     @IBAction func managerAccessButtonClicked(_ sender: Any) {
