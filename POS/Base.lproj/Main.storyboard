@@ -197,7 +197,7 @@
             <objects>
                 <tableViewController id="var-XS-mBS" customClass="edit" customModule="POS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="vQo-Yj-nN0">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -250,10 +250,10 @@
             </objects>
             <point key="canvasLocation" x="3342.7480916030531" y="-311.26760563380282"/>
         </scene>
-        <!--anythingWorks-->
+        <!--Add Data Set-->
         <scene sceneID="MhG-rD-3Jy">
             <objects>
-                <viewController storyboardIdentifier="changeDataVC" title="anythingWorks" id="ewZ-fA-Ubc" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="changeDataVC" id="ewZ-fA-Ubc" customClass="addDataSet" customModule="POS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p5K-S6-OAg">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -295,12 +295,20 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelEdits:" destination="ewZ-fA-Ubc" eventType="touchUpInside" id="b3C-mZ-eMV"/>
+                                    <segue destination="var-XS-mBS" kind="show" id="ORF-bp-lZe"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Skd-Hj-vx4">
                                 <rect key="frame" x="233" y="409" width="61" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="saveEdits:" destination="ewZ-fA-Ubc" eventType="touchUpInside" id="nCH-b6-MxW"/>
+                                    <segue destination="var-XS-mBS" kind="show" id="yBu-AS-bxx"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2e-dV-Moy">
                                 <rect key="frame" x="39" y="282" width="65" height="21"/>
@@ -313,14 +321,20 @@
                         <viewLayoutGuide key="safeArea" id="Lk6-EY-1R6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="quantityField" destination="gZw-uv-0pD" id="LUp-aE-e1c"/>
+                        <outlet property="titleField" destination="zVg-id-uL5" id="Fxc-bW-dMz"/>
+                        <outlet property="valueField" destination="FIm-R8-k8j" id="xGl-gT-JYL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gjo-m2-AkN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4301.5267175572517" y="-311.26760563380282"/>
+            <point key="canvasLocation" x="4563" y="-539"/>
         </scene>
         <!--Edit-->
         <scene sceneID="zG4-a5-YQv">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="asF-2i-lN8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dJD-7C-8uQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Edit" id="4yv-l1-KwH"/>
                     <toolbarItems/>
@@ -333,7 +347,6 @@
                         <segue destination="var-XS-mBS" kind="relationship" relationship="rootViewController" id="daM-1N-OfK"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="asF-2i-lN8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2167" y="-311"/>
         </scene>
@@ -419,6 +432,9 @@
             <point key="canvasLocation" x="1057" y="-56"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ORF-bp-lZe"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">

@@ -21,6 +21,7 @@
 		E92CD7FD2B96995B006913B0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CD7FC2B96995B006913B0 /* TableViewController.swift */; };
 		E92CD7FF2B969DC8006913B0 /* history.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CD7FE2B969DC8006913B0 /* history.swift */; };
 		E92CD8012B96F394006913B0 /* editTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CD8002B96F394006913B0 /* editTableViewCell.swift */; };
+		E92CD8032B9707AA006913B0 /* addDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CD8022B9707A9006913B0 /* addDataSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		E92CD7FC2B96995B006913B0 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		E92CD7FE2B969DC8006913B0 /* history.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = history.swift; sourceTree = "<group>"; };
 		E92CD8002B96F394006913B0 /* editTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editTableViewCell.swift; sourceTree = "<group>"; };
+		E92CD8022B9707A9006913B0 /* addDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addDataSet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 		E919F33D2B8EAF2A00B0BC58 = {
 			isa = PBXGroup;
 			children = (
+				E92CD8022B9707A9006913B0 /* addDataSet.swift */,
 				E919F3482B8EAF2A00B0BC58 /* POS */,
 				E919F35F2B8EAF2C00B0BC58 /* POSTests */,
 				E919F3692B8EAF2C00B0BC58 /* POSUITests */,
@@ -273,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E92CD8032B9707AA006913B0 /* addDataSet.swift in Sources */,
 				E919F34E2B8EAF2A00B0BC58 /* ViewController.swift in Sources */,
 				E92CD7FF2B969DC8006913B0 /* history.swift in Sources */,
 				E92CD7FD2B96995B006913B0 /* TableViewController.swift in Sources */,

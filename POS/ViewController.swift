@@ -40,7 +40,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         displayFinalValue.textAlignment = .right
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        displayItems.reloadAllComponents()
+    }
     // defines number of columns
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         //        return dataCollection.data[0].getColumns()
